@@ -44,6 +44,7 @@ public class MySimpleBankingApp {
             System.out.println("--------------------------------");
             System.out.println("What do you want to do?");
             char userChoice = Character.toLowerCase(Keyboard.readChar());
+            systemThinking();
 
             // while userChoice != 'd'
             //          trigger appropriate action based on user choice (use switch case statement)
@@ -51,22 +52,22 @@ public class MySimpleBankingApp {
             switch(userChoice){
                 case 'a':
                     displayInfo();
-                    pause(3);
+                    systemThinking();
                     System.out.println("What do you want to do next?");
                     break;
                 case 'b':
                     addMoney();
-                    pause(3);
+                    systemThinking();
                     System.out.println("What do you want to do next?");
                     break;
                 case 'c':
                     withdrawMoney();
-                    pause(3);
+                    systemThinking();
                     System.out.println("What do you want to do next?");
                     break;
                 case 'd':
                     transferMoney();
-                    pause(3);
+                    systemThinking();
                     System.out.println("What do you want to do next?");
                     break;
                 case 'e':
@@ -79,19 +80,31 @@ public class MySimpleBankingApp {
         System.out.println("Thanks for choosing Revolt, see you next time!");
     }
 
+    // adds system thinking effect
+    public static void systemThinking() {
+        System.out.print(".");
+        pause(1);
+        System.out.print(".");
+        pause(1);
+        System.out.print(".");
+        pause(1);
+        System.out.println("");
+    }
+
     // TODO: create custom methods here for the functions
     public static void displayInfo() {
-        System.out.println("Your balance: " + balance + currency);
+        System.out.println("Your balance is " + balance + " " + currency + "(s)");
         System.out.println("Your recent transactions:");
         ArrayHelper.printElements(transactions);
     }
 
     public static void addMoney() {
-        
+        System.out.println("Enter the amount you want to add to your balance:");
+        balance = balance + Keyboard.readDouble();
     }
     
     public static void withdrawMoney() {
-    
+        
     }
 
     public static void transferMoney() {
