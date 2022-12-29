@@ -38,8 +38,9 @@ public class MySimpleBankingApp {
             System.out.println("--------------------------------");
             System.out.println("A. Display Account Information");
             System.out.println("B. Add Money");
-            System.out.println("C. Send Money");
-            System.out.println("D. Quit");
+            System.out.println("C. Withdraw Money");
+            System.out.println("D. Transfer Money");
+            System.out.println("E. Quit");
             System.out.println("--------------------------------");
             System.out.println("What do you want to do?");
             char userChoice = Character.toLowerCase(Keyboard.readChar());
@@ -54,16 +55,21 @@ public class MySimpleBankingApp {
                     System.out.println("What do you want to do next?");
                     break;
                 case 'b':
-                    System.out.println("B. Add Money");
+                    addMoney();
                     pause(3);
                     System.out.println("What do you want to do next?");
                     break;
                 case 'c':
-                    System.out.println("C. Send Money");
+                    withdrawMoney();
                     pause(3);
                     System.out.println("What do you want to do next?");
                     break;
                 case 'd':
+                    transferMoney();
+                    pause(3);
+                    System.out.println("What do you want to do next?");
+                    break;
+                case 'e':
                     repeat = false;
                     pause(1);
                     break;
@@ -73,11 +79,23 @@ public class MySimpleBankingApp {
         System.out.println("Thanks for choosing Revolt, see you next time!");
     }
 
-    // TODO: create custom methods here for: add money, display all transactions, send
+    // TODO: create custom methods here for the functions
     public static void displayInfo() {
         System.out.println("Your balance: " + balance + currency);
         System.out.println("Your recent transactions:");
         ArrayHelper.printElements(transactions);
+    }
+
+    public static void addMoney() {
+        
+    }
+    
+    public static void withdrawMoney() {
+    
+    }
+
+    public static void transferMoney() {
+    
     }
 
     /**
