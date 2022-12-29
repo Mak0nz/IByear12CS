@@ -224,7 +224,7 @@ public class ArrayHelper {
      */
     public static void printElements(String[] arr) {
         for(String e : arr) {
-            System.out.print(e + ", ");
+            System.out.println(e + ", ");
         }
         System.out.println();
     }
