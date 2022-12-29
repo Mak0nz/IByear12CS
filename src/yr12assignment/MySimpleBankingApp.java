@@ -21,7 +21,7 @@ public class MySimpleBankingApp {
      * Declare variables that can be used by every method here! 
      */
     public static double balance = 250.00;
-    public static String currency = "Euro";
+    public static String currency = "Euro(s)";
     public static String[] transactions = new String[5];
     public static String[] contacts = {"melb1234", "wchurchill456"};
 
@@ -91,20 +91,33 @@ public class MySimpleBankingApp {
         System.out.println("");
     }
 
-    // TODO: create custom methods here for the functions
+    // create custom methods here for the functions
     public static void displayInfo() {
-        System.out.println("Your balance is " + balance + " " + currency + "(s)");
+        System.out.println("Your balance is " + balance + " " + currency);
         System.out.println("Your recent transactions:");
         ArrayHelper.printElements(transactions);
     }
 
     public static void addMoney() {
-        System.out.println("Enter the amount you want to add to your balance:");
+        System.out.println("Enter the amount you want to add to your balance: (" + currency +")");
         balance = balance + Keyboard.readDouble();
     }
     
     public static void withdrawMoney() {
-        
+        boolean withdrawRepeat = true;
+        while (withdrawRepeat) {
+            System.out.println("Enter the amount you want to withdraw from your balance: (" + currency +")");
+            double withdraw = Keyboard.readDouble();
+            systemThinking();
+            if (withdraw > balance) {
+                System.out.println("transaction failed. insufficient funds");
+                System.out.println("Have another go...");
+                pause(1);
+            } else {
+                balance = balance - withdraw;
+                withdrawRepeat = false;
+            }
+        } 
     }
 
     public static void transferMoney() {
