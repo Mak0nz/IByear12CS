@@ -21,9 +21,10 @@ public class MySimpleBankingApp {
      * Declare variables that can be used by every method here! 
      */
     public static double balance = 250.00;
-    public static String currency = "Euro(s)";
+    public static String currency = "EUROs";
     public static String[] transactions = new String[5];
     public static String[] contacts = {"melb1234", "wchurchill456"};
+    public static String transferAddress = "";
 
     public static void main(String[] args) {
         // we are calling this method first to load data
@@ -121,7 +122,37 @@ public class MySimpleBankingApp {
     }
 
     public static void transferMoney() {
-    
+        boolean transferContactConfirm = true;
+        boolean transferBalanceConfirm = true;
+        while (transferContactConfirm) {
+            System.out.println("Input ID of transfer address:");
+            transferAddress = Keyboard.readString();
+            if (transferAddress.equals(contacts[0])  || transferAddress.equals(contacts[1])) {
+                System.out.println("Searching for transfer address");
+                systemThinking();
+                System.out.println("Contact confirmed.");
+                transferContactConfirm = false;
+            } else {
+                System.out.println("Searching for transfer address");
+                systemThinking();
+                System.out.println("Contact does not exist, please try again.");
+            }
+        }
+        while (transferBalanceConfirm) {     
+            System.out.println("Input transfer amount: (" + currency +")");
+            double transferBalance = Keyboard.readDouble();
+            systemThinking();
+            if ((transferBalance <= 0) && (balance < transferBalance)) {
+                System.out.println("Transfer failed. insufficient funds");
+                System.out.println("Have another go...");
+                pause(1);
+            } else {
+                balance = balance - transferBalance;
+                System.out.println("Transfer successful.");
+                System.out.println("Sent " + transferBalance + " " + currency + " to " + transferAddress);
+                transferBalanceConfirm = false;
+            }
+        }
     }
 
     /**
@@ -143,7 +174,7 @@ public class MySimpleBankingApp {
                     fileScan.close();
                 }
             } catch (IOException e) {
-                System.out.println("Err: Did not manage to load data.");
+                System.out.println("Error: Did not manage to load data.");
             }
         }
     }
