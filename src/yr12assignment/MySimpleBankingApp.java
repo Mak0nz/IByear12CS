@@ -99,9 +99,22 @@ public class MySimpleBankingApp {
         ArrayHelper.printElements(transactions);
     }
 
-    public static void addMoney() {
-        System.out.println("Enter the amount you want to add to your balance: (" + currency +")");
-        balance = balance + Keyboard.readDouble();
+    public static void addMoney() {        
+        boolean addMoneyRepeat = true;
+        while (addMoneyRepeat) {
+            System.out.println("Enter the amount you want to add to your balance: (" + currency +")");
+            double addMoney = Keyboard.readDouble();
+            systemThinking();
+            if (addMoney <= 0) {
+                System.out.println("Transaction failed. insufficient funds");
+                System.out.println("Have another go...");
+                pause(1);
+            } else {
+                balance = balance + addMoney;
+                System.out.println(addMoney + " " + currency +" have been successfully withdrawn from your balance.");
+                addMoneyRepeat = false;
+            }
+        } 
     }
     
     public static void withdrawMoney() {
@@ -120,7 +133,7 @@ public class MySimpleBankingApp {
                 pause(1);
             } else {
                 balance = balance - withdraw;
-                System.out.println(withdraw + currency +" has been successfully withdrawn from your balance.");
+                System.out.println(withdraw + " " + currency +" have been successfully withdrawn from your balance.");
                 withdrawRepeat = false;
             }
         } 
