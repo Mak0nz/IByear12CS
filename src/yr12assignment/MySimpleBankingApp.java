@@ -111,7 +111,7 @@ public class MySimpleBankingApp {
             double withdraw = Keyboard.readDouble();
             systemThinking();
             if (withdraw <= 0) {
-                System.out.println("Transfer failed. insufficient funds");
+                System.out.println("Transaction failed. insufficient funds");
                 System.out.println("Have another go...");
                 pause(1);
             } else if (withdraw > balance) {
