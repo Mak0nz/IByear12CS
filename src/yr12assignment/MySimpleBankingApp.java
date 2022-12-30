@@ -110,12 +110,17 @@ public class MySimpleBankingApp {
             System.out.println("Enter the amount you want to withdraw from your balance: (" + currency +")");
             double withdraw = Keyboard.readDouble();
             systemThinking();
-            if (withdraw > balance) {
+            if (withdraw <= 0) {
+                System.out.println("Transfer failed. insufficient funds");
+                System.out.println("Have another go...");
+                pause(1);
+            } else if (withdraw > balance) {
                 System.out.println("transaction failed. insufficient funds");
                 System.out.println("Have another go...");
                 pause(1);
             } else {
                 balance = balance - withdraw;
+                System.out.println(withdraw + currency +" has been successfully withdrawn from your balance.");
                 withdrawRepeat = false;
             }
         } 
