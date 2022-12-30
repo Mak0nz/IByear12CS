@@ -142,7 +142,11 @@ public class MySimpleBankingApp {
             System.out.println("Input transfer amount: (" + currency +")");
             double transferBalance = Keyboard.readDouble();
             systemThinking();
-            if ((transferBalance <= 0) && (balance < transferBalance)) {
+            if (transferBalance <= 0) {
+                System.out.println("Transfer failed. insufficient funds");
+                System.out.println("Have another go...");
+                pause(1);
+            } else if (balance < transferBalance) {
                 System.out.println("Transfer failed. insufficient funds");
                 System.out.println("Have another go...");
                 pause(1);
