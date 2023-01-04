@@ -111,7 +111,7 @@ public class MySimpleBankingApp {
                 pause(1);
             } else {
                 balance = balance + addMoney;
-                System.out.println(addMoney + " " + currency +" have been successfully withdrawn from your balance.");
+                System.out.println(addMoney + " " + currency +" have been successfully added to your balance.");
                 addMoneyRepeat = false;
             }
         } 
