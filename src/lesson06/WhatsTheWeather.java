@@ -38,7 +38,7 @@ public class WhatsTheWeather {
             // Ask user to input conditions of the day
             System.out.println("Enter condition value using the following code: ");
             System.out.println("Sunny [0], CLOUDY [1], RAINY [2], SNOWY [3], THUNDER [4],");
-            humidity[i] = Keyboard.readInt();
+            conditions[i] = Keyboard.readInt();
 
             System.out.println("-----------------------------------------");
         }
