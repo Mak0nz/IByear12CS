@@ -182,7 +182,7 @@ public class MySimpleBankingApp {
      */
     public static void init() {
         // make sure you have a text file
-        File file = new File("yr12assignment", "MySimpleTransactions.txt");
+        File file = new File("PROJECT-CURIOSITY\\src\\yr12assignment", "MySimpleTransactions.txt");
         if (file.exists()) {
             int lines;
             try (Stream<String> stream = Files.lines(file.toPath(), StandardCharsets.UTF_8)) {
