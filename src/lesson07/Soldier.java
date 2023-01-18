@@ -11,14 +11,17 @@ public class Soldier {
     String name;
     String hungerLevel = "Hamborgor";
     boolean isHungry;
+    char gender;
 
 
 
     /**
      * ------ Coming soon ------
      */
-
-
+    public Soldier() {} // default constructor
+    public Soldier(char gender) { // parametised constructor to immediately get a  desired state
+        this.gender = gender;
+    }
 
     /**
      * ------ Behavioral Method ------
