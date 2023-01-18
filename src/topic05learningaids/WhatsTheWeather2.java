@@ -2,7 +2,7 @@ package topic05learningaids;
 
 public class WhatsTheWeather2 {
     
-    public static void main() {
+    public static void main(char[] args) {
         // declare all the arrays we need
         char[] weekDays = {'M', 'T', 'W', 'T', 'F', 'S', 'S'};
 
