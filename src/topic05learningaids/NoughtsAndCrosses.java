@@ -6,14 +6,40 @@ package topic05learningaids;
  */
 public class NoughtsAndCrosses {
 
-    // TODO: declare char 2D array here
+    static char[][] grid;
     
-    public static void main() {
+    public static void main(String[] args) {
+        // allocate memory for mygrid
+        grid = new char[3][3];
+        displayGrid();
+
+        // filling the first row with crosses
+        grid[0][0] = 'X';
+        grid[0][1] = 'X';
+        grid[0][2] = 'X';
+
+        displayGrid();
 
     }
 
     public static void displayGrid() {
         // TODO
+        for (int row = 0; row < 3; row++) { // jump to row (vertically)
+            System.out.println("-------------------");
+            for (int col = 0; col < 3; col++) { // jump to col (horizontally)
+                if (grid[row][col] == 0) {
+                    grid[row][col] = ' ';
+                }
+                System.out.print("|  " + grid[row][col]);
+                if (col == 2) {
+                    System.out.print("  |");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("-------------------");
     }
 
     public static boolean horizontalCheck(int row, char symbol) {
@@ -31,7 +57,7 @@ public class NoughtsAndCrosses {
         return false;
     }
 
-    public static boolean isWinningMove() {
-        return false;
+    public static boolean isWinningMove(int col, char symbol) {
+        return diagonalCheck(col, symbol) || verticalCheck(col, symbol) || horizontalCheck(col, symbol);
     }
 }
