@@ -60,12 +60,21 @@ public class NoughtsAndCrosses {
         return true;
     }
 
-    public static boolean diagonalCheck(int col, char symbol) {
-        // TODO
-        return false;
+    public static boolean diagonalCheck(char symbol) {
+        if(grid[1][1] != symbol) {
+            return false;
+        }
+        for(int row = 0; row < grid.length; row++) {
+            for(int col = 0; col < grid[0].length; col++){
+                if(grid[row][col] != symbol) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static boolean isWinningMove(int col, char symbol) {
-        return diagonalCheck(col, symbol) || verticalCheck(col, symbol) || horizontalCheck(col, symbol);
+        return diagonalCheck(symbol) || verticalCheck(col, symbol) || horizontalCheck(col, symbol);
     }
 }
