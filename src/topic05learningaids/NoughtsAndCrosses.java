@@ -43,13 +43,21 @@ public class NoughtsAndCrosses {
     }
 
     public static boolean horizontalCheck(int row, char symbol) {
-        // TODO
+        for (int i = 0; i < grid[row].length; i++) {
+            if (grid[row][i] != symbol) {
+                return false;
+            }
+        }
         return false;
     }
 
     public static boolean verticalCheck(int col, char symbol) {
-        // TODO
-        return false;
+        for (int row = 0; row < grid.length; row++) {
+            if (grid[row][col] != symbol) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean diagonalCheck(int col, char symbol) {
