@@ -13,12 +13,17 @@ public class LinearSearch {
      * @return
      */
     public static int search(int[] numarr, int target) {
-        // TODO: implement the following pseudocode
+        // implement the following pseudocode
         // loop for index from 0 to numarr.length
         //    if target is equal to numarr[index] then
         //       return index
         //    end if
         // end loop
+        for (int i = 0; i < numarr.length; i++) {
+            if (numarr[i] == target) {
+                return i;
+            }
+        }
         return -1; // not found because -1 is not an index that exists
     }
 
