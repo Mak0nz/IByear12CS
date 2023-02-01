@@ -61,17 +61,22 @@ public class NoughtsAndCrosses {
     }
 
     public static boolean diagonalCheck(char symbol) {
-        if(grid[1][1] != symbol) {
-            return false;
-        }
+        boolean winRight = true;
+        boolean winLeft = true;
         for(int row = 0; row < grid.length; row++) {
             for(int col = 0; col < grid[0].length; col++){
-                if(grid[row][col] != symbol) {
-                    return false;
+                if (row == col) {
+                    if(grid[row][col] != symbol) {
+                        return winRight;
+                    }
+                } else if ((row + col) == grid.length -1) {
+                    if (grid[row][col] != symbol) {
+                        winLeft = false;
+                    }
                 }
             }
         }
-        return true;
+        return winRight || winLeft;
     }
 
     public static boolean isWinningMove(int col, char symbol) {
