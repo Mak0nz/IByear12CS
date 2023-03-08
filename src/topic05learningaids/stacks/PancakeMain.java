@@ -14,5 +14,19 @@ public class PancakeMain {
         for (int i = 0; i < number; i++) {
             myBreakfast.push();
         }
+
+        // confirm to user that pancake stack is ready
+        System.out.println("Your order is ready, Yum!");
+        
+        // ask the user if they now want to eat the pancake
+        System.out.println("Do you want to eat? (y/n)");
+        char response = Keyboard.readChar();
+        if (response == 'y') {
+            System.out.print("How many pancakes do you want to eat?");
+            Pancake eatMe = myBreakfast.pop();
+            // todo: write code to eat pancake
+        } else {
+            System.out.println(":( The pancake will be gone to waste");
+        }
     }
 }
