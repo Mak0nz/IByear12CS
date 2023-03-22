@@ -1,5 +1,8 @@
 package helpers;
 
+import javax.imageio.plugins.tiff.ExifParentTIFFTagSet;
+import javax.xml.stream.events.EndElement;
+
 /**
  * This helper class was created by the Year 12s of the year 2021/22 to help
  * people learn about arrays.
@@ -200,6 +203,20 @@ public class ArrayHelper {
             }
             iterations++;
             printElements(arr);
+        }
+        return arr;
+    }
+
+    public double[] bubbleSort2(double[] arr) {
+        for (int pass = 0; pass < arr.length-1; pass++) {
+            for (int current = 0; current < arr.length-1; current++) {
+                if (arr[current] < arr[current+1]) {
+                    double temp = arr[current];
+                    arr[current] = arr[current+1];
+                    arr[current+1] = temp;
+                }
+                pass++;
+            }
         }
         return arr;
     }
