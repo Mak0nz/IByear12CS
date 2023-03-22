@@ -207,15 +207,14 @@ public class ArrayHelper {
         return arr;
     }
 
-    public double[] bubbleSort2(double[] arr) {
+    public static double[] bubbleSort2(double[] arr) {
         for (int pass = 0; pass < arr.length-1; pass++) {
             for (int current = 0; current < arr.length-1; current++) {
-                if (arr[current] < arr[current+1]) {
+                if (arr[current] > arr[current+1]) {
                     double temp = arr[current];
                     arr[current] = arr[current+1];
                     arr[current+1] = temp;
                 }
-                pass++;
             }
         }
         return arr;
