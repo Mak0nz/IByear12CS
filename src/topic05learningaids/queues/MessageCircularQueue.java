@@ -1,18 +1,19 @@
 package topic05learningaids.queues;
 
 // Message queue is a thread so that it can run in parallel to the main java thread.
-public class MessageQueue extends Thread {
+public class MessageCircularQueue extends Thread {
 
     // --- Attributes (state) ---
     Message[] queue;
 
-    final int headIndex = 0;
+    int headIndex;
 
     int tailIndex;
 
     // --- The Constructor ---
-    public MessageQueue() {
+    public MessageCircularQueue() {
         queue = new Message[5];
+        headIndex = 0;
         tailIndex = headIndex;
     }
     
@@ -30,7 +31,7 @@ public class MessageQueue extends Thread {
         // not full
         if (!isFull()) {
             queue[tailIndex] = m;
-            tailIndex++;
+            tailIndex = (tailIndex+1) % queue.length;
         }
     }
 
