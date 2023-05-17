@@ -6,7 +6,9 @@ public class EncapsulationDemo {
     public static void main(String[] args) {
 
         // TODO: Create an instance of a student
-        Student simon = new Student("Kailu","Pucciarelli",12032005);
+        Student simon = new Student("Kailu","Pucciarelli", 12032005);
 
     }
+
+    
 }
