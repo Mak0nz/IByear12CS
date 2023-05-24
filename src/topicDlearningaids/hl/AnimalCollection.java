@@ -1,19 +1,23 @@
 package topicDlearningaids.hl;
 
+/**
+ * Link to D.4.10
+ */
 public class AnimalCollection {
-    
     /**
-    * -------- Attributes ------------------------------------
-    */
-    Animal headAnimal;
-    Animal currentAnimal;
+     * -------- Attributes ------------------------------------
+     */
+    private Animal headAnimal;
+
+    // our iterator of type Animal because it is self-referential
+    private Animal iteratorAnimal;
 
     /**
     * -------- Constructor ------------------------------------
     */ 
     public AnimalCollection(Animal headAnimal) {
         this.headAnimal = headAnimal;
-        this.currentAnimal = headAnimal;
+        this.iteratorAnimal = headAnimal;
     }
 
 
@@ -35,7 +39,8 @@ public class AnimalCollection {
     }
 
     public void addItem(Animal item) {
-
+        Animal tail = getNext();
+        tail.next = item;
     }
 
     public void removeItem(Animal item) {
@@ -43,20 +48,23 @@ public class AnimalCollection {
     }
     
     // nice perks we want to add for developer, in exams these require 
-    public Animal getHead(){
+    public Animal getHead() {
         return this.headAnimal;
     }
-
     /**
      * It gets the last item in the Animal collection
      * @return
      */
     public Animal getTail() {
+        Animal tempIterator = this.headAnimal;
+        while (tempIterator.hasNext()) {
+            tempIterator = tempIterator.getNext();
+        }
         return null;
     }
 
     public boolean isEmpty() {
-        if (headAnimal == null){
+        if (this.headAnimal == null) {
             return true;
         }
         return false;
