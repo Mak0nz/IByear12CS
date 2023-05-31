@@ -27,6 +27,13 @@ public class Points {
         statusNow  =  "Bronze";  
     }
 
+    public Points(String id, int bp) {
+        memberId = id;
+        bonusPoints = bp;
+        y = 0; 
+        statusNow = "Bronze";
+    }
+
     // Accessor methods
     public String getMemberId() {
         return this.memberId;
