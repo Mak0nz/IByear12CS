@@ -1,4 +1,4 @@
-package topicDlearningaids.nov2018hlp2;
+package topicDlearningaids.nov2018p2;
 public class Nov2017hlp1q6 {
     public static void main(String[] args) { 
         int N;
