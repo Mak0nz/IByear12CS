@@ -12,20 +12,46 @@
 
 ## 10 c.
 ```
-    ------------------------
-    |       Arrival        |
-    ------------------------
-    | - Flight myFlight    |
-    | - String sta;        |
-    | - int runway;        |
-    | - String gate;       |
-    | - String delay;      |
-    | - int delay;         |
-    ------------------------
-    | + arrival(flight,delay) |
-    | + void addDelay(int) |
-    | + void getETA()      |
+------------------------------
+|          Arrival           |
+------------------------------
+| - Flight myFlight          |
+| - String sta;              |
+| - int runway;              |
+| - String gate;             |
+| - int delay;               |
+| - boolean landed;          |
+------------------------------
+| + Arrival(Flight, String)  |
+| + void addDelay(int)       |
+| + String getETA()          |
+| + int compareWith(String)  |
+| + int compareWith(Arrival) |
+------------------------------
 ```
+
+## 10 d.
+```
+private static int search(String flightID)
+{ 
+    int index = -1; 
+    // loop through all Arrival objects in inbound
+    for(int i = 0; i < inbound.length; i++) {
+        // get the next instance of Arrival
+        Arrival tempArrival = inbound[i];
+        if(tempArrival.compareWith(flightID) == 0) {
+            index = i;
+        }
+    }
+    // returns the index of the Arrival object with flightID
+    return index;        
+}
+```
+
+## 10 e.
+> **i)** It may be faster as a search because it limits its search by half in each iteration. This is only possible because it is sorted.
+
+> **ii)**  If it is not sorted it cannot work, therefore, when inserting new elements you have to make sure the order remains. This might require a sorting algorithm.
 
 # HL Extension
 
