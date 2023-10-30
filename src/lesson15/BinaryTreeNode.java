@@ -7,13 +7,14 @@ public class BinaryTreeNode {
 
     private boolean isVisited;
 
-    private boolean isParent;
-
     private String key; // In here we are storing "P", "C"
 
     private BinaryTreeNode left;
 
     private BinaryTreeNode right;
+
+    // light ui dependency
+    private static StringBuilder printBuffer = new StringBuilder();
     
     // Constructor
     public BinaryTreeNode(boolean isRoot, String key) {
@@ -32,8 +33,10 @@ public class BinaryTreeNode {
     }
 
     public boolean isParent() {
-        if (this.left != null || this.right != null) {return true;} 
-        else {return false;}
+        if (this.left != null || this.right != null) {
+            return true;
+        }
+        return false;
     }
 
     public void setLeft(BinaryTreeNode left) {
@@ -51,35 +54,40 @@ public class BinaryTreeNode {
     public BinaryTreeNode getRight() {
         return this.right;
     }
-    public void visit(){
-        System.out.println(key);
-        isVisited = true;
+
+    public void visit() { 
+        BinaryTreeNode.printBuffer.append(this.key + ", ");
+        this.isVisited = true;
+    }
+
+    public StringBuilder getPrintBuffer() {
+        return BinaryTreeNode.printBuffer;
     }
 
     /**
      * Tree Node Traversals
      */
-    public void printInorder()
+    public void printInOrder()
     {
-        if (isVisited == true) return;
+        if (this.isVisited) return;
 
         /* Recur on the left as much as you can */
         if (this.left != null) {
-            this.left.printInorder();
+            this.left.printInOrder();
         }
         
-        // call visit
-        visit();
+        // visit the current node
+        this.visit();
         
         /* Recur on the right */
         if (this.right != null) {
-            this.right.printInorder();
+            this.right.printInOrder();
         }
     }
 
-    // postOrder
-    public void printPostOrder(){
-        if (isVisited == true) return;
+    public void printPostOrder()
+    {
+        if (this.isVisited) return;
 
         /* Recur on the left as much as you can */
         if (this.left != null) {
@@ -91,16 +99,18 @@ public class BinaryTreeNode {
             this.right.printPostOrder();
         }
         
-        // call visit
-        visit();
+        // visit the current node
+        this.visit();
+
+        return;
     }
 
-    // preOrder
-    public void printPreOrder(){
-        if (!isVisited == true) {
-            // call visit
-            visit();
-        }     
+    public void printPreOrder()
+    {
+        if (!this.isVisited) {
+            // visit the current node
+            this.visit();
+        }
 
         /* Recur on the left as much as you can */
         if (this.left != null) {
@@ -110,7 +120,8 @@ public class BinaryTreeNode {
         /* Recur on the right */
         if (this.right != null) {
             this.right.printPreOrder();
-        }   
-    }
+        }
 
+        return;
+    }
 }

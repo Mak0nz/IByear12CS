@@ -14,6 +14,7 @@ public class BinaryTreeDemo {
         csTeacher.getRight().getRight().getRight().setLeft(new BinaryTreeNode(false, "Dennis"));
         csTeacher.getRight().getRight().getRight().setRight(new BinaryTreeNode(false, "D"));
 
-        csTeacher.printPostOrder();
+        csTeacher.printInOrder();
+        System.out.println(csTeacher.getPrintBuffer());
     }
 }
