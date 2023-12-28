@@ -31,16 +31,30 @@ public class Recipe {
             if (containsIngredient(search[index])) { 
                 return true;
             }
+            // increment index by 1
+            index += 1;
+
         }
-
-        // increment index by 1
-        index += 1;
-
         return false;
     }
     
     public void displayExcerpt() {
         // TODO: A nice display with the id, name, servings, and the first 3 ingredients 
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Servings: " + servings);
+        System.out.print("Ingredients: ");
+        // Display the top 3 ingredients
+        int displayLimit = Math.min(3, ingredients.length);
+        for (int i = 0; i < displayLimit; i++) {
+            System.out.printf("| %-40s |\n", ingredients[i]);
+        }
+
+        // If there are more than 3 ingredients, indicate that there are additional ingredients
+        if (ingredients.length > 3) {
+            System.out.println("| ... and more                               |");
+        }
+        
     }
 
     public void displayRecipe(boolean isMethodDisplay) {

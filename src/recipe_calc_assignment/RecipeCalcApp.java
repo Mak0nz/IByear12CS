@@ -32,8 +32,14 @@ public class RecipeCalcApp {
         // while nextPage is true and selection is equal to -1
         while (NextPage && selection == -1) {
             // TODO: a for loop to display recipe excerpts between page - 1 and page + 4
+            for (int i = 0; i < 4; i++) {
+                Recipe recipe = recipes[i];
+                recipe.displayExcerpt();
+            }
 
-            // TODO: update page variable
+
+            // update page variable
+            page++;
 
             // if page is equal to 5 then nextPage is updated to false
             if (page == 5) {
@@ -56,7 +62,8 @@ public class RecipeCalcApp {
                         
         }
         
-        // TODO: outside of while loop create a graceful exit for the user
+        // outside of while loop create a graceful exit for the user
+        System.out.println("Thanks for using RecipeCalcApp, hope you enjoyed your stay!");
     }
 
     /**
