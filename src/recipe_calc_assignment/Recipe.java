@@ -32,14 +32,14 @@ public class Recipe {
                 return true;
             }
             // increment index by 1
-            index += 1;
+            index++;
 
         }
         return false;
     }
     
     public void displayExcerpt() {
-        // TODO: A nice display with the id, name, servings, and the first 3 ingredients 
+        // A nice display with the id, name, servings, and the first 3 ingredients 
         System.out.println("ID: " + id);
         System.out.println("Name: " + name);
         System.out.println("Servings: " + servings);
@@ -47,31 +47,47 @@ public class Recipe {
         // Display the top 3 ingredients
         int displayLimit = Math.min(3, ingredients.length);
         for (int i = 0; i < displayLimit; i++) {
-            System.out.printf("| %-40s |\n", ingredients[i]);
+            System.out.print(ingredients[i] + ", ");
         }
 
         // If there are more than 3 ingredients, indicate that there are additional ingredients
         if (ingredients.length > 3) {
-            System.out.println("| ... and more                               |");
+            System.out.println(" ... and more.");
+        } else {
+            System.out.println();
         }
-        
+        System.out.println("------------------------------------------");
     }
 
     public void displayRecipe(boolean isMethodDisplay) {
-        // TODO: Display the name
+        // Display the name
+        System.out.println("Name: " + name);
 
-        // TODO: Display the servings
+        // Display the servings
+        System.out.println("Servings: " + servings);
 
-        // TODO: Display the ingredients list, with the qty
+        // Display the ingredients list, with the qty
+        System.out.println("Ingredients:  Quantity:");
+        for (int i = 0; i < qty.length; i++) {
+            System.out.println(ingredients[i] + ":  " + qty[i]);
+        }
 
         if (isMethodDisplay) {
-            // TODO: Display the method neatly using a for loop
+            // Display the method neatly using a for loop
+            for (int i = 0; i < method.length; i++){
+                System.out.println(method[i]);
+            }
         }
     }
 
     public void adjustQtyForServings(int servings) {
-        // TODO: for every number in the qty[]
+        int i;
 
-        //      TODO: update qty[] by doing a calculation with servings        
+        // for every number in the qty[]
+        for (i = 0; i < qty.length; i++) {
+            // update qty[] by doing a calculation with servings
+            qty[i] = qty[i] / Double.valueOf(this.servings);
+            qty[i] = Double.valueOf(servings) * qty[i];
+        }
     }
 }

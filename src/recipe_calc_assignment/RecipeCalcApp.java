@@ -14,39 +14,39 @@ public class RecipeCalcApp {
     /**
      * Declare global variables that can be used anywhere here. 
      */
-    public static Recipe[] recipes = new Recipe[20];
+    static Recipe[] recipes = new Recipe[20];
 
     public static void main(String[] args) {
         // we are calling this method first to load data
         // do not remove this
         init();
 
-        int selection = -1;
+        int selection = 0;
 
         // declare a boolean variable for nextPage and set it to true
-        boolean NextPage = true;
+        boolean nextPage = true;
 
         // declare an int variable for page and set it to 1
         int page = 1;
 
-        // while nextPage is true and selection is equal to -1
-        while (NextPage && selection == -1) {
-            // TODO: a for loop to display recipe excerpts between page - 1 and page + 4
-            for (int i = 0; i < 4; i++) {
+        System.out.println("Welcome to RecipeCalcApp!");
+        System.out.println("------------------------------------------");
+        // while nextPage is true and selection is equal to 0
+        while (nextPage && selection == 0) {
+            // a for loop to display recipe excerpts between page - 1 and page + 4
+            for (int i = (page-1)*4; i < page*4; i++) {
                 Recipe recipe = recipes[i];
                 recipe.displayExcerpt();
             }
 
-
-            // update page variable
-            page++;
-
             // if page is equal to 5 then nextPage is updated to false
             if (page == 5) {
-                NextPage = false;
+                nextPage = false;
             } 
 
-            // TODO: ask user to select recipe, or -1 for next page
+            // ask user to select recipe, or -1 for next page
+            System.out.println("Select recipe by entering the matching ID, otherwise enter '0' for the next page");
+            selection = Keyboard.readInt();
 
             if (selection > 0) {
                 Recipe selectedRecipe = recipes[selection - 1];
@@ -55,9 +55,13 @@ public class RecipeCalcApp {
                 System.out.println("Please enter number of servings:");
                 int servings = Keyboard.readInt();
 
-                // TODO: Adjust servings for the selectedRecipe
+                // Adjust servings for the selectedRecipe
+                recipes[selection-1].adjustQtyForServings(servings);
 
                 selectedRecipe.displayRecipe(false);
+            } else if (selection == 0) {
+                // update page variable
+                page++;
             }
                         
         }
@@ -72,7 +76,7 @@ public class RecipeCalcApp {
      */
     public static void init() {
         // make sure you have a text file
-        File file = new File("IByear12CS\\src\\recipe_calc_assignment", "recipes.csv");
+        File file = new File("src\\recipe_calc_assignment", "recipes.csv");
         if (file.exists()) {
             int lines;
             try (Stream<String> stream = Files.lines(file.toPath(), StandardCharsets.UTF_8)) {
